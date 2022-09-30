@@ -86,6 +86,9 @@ function countEntrants(entrants) {
 
 function calculateEntry(entrants) {
   if (!(entrants) || Object.entries(entrants).length === 0) return 0;
+  const { child, adult, senior } = countEntrants(entrants);
+  const totalPrice = (child * prices.child) + (adult * prices.adult) + (senior * prices.senior);
+  return totalPrice;
 }
 
 module.exports = { calculateEntry, countEntrants };
