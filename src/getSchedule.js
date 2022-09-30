@@ -1,7 +1,11 @@
 const { species, hours } = require('../data/zoo_data');
 
+const getAnimalAvailability = (animal) => (
+  species.find((zooAnimal) => animal === zooAnimal.name).availability
+);
+
 function getSchedule(scheduleTarget) {
-  // seu código aqui
+  return getAnimalAvailability(scheduleTarget);
 }
 
 module.exports = getSchedule;
