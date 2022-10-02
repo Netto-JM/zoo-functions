@@ -12,19 +12,17 @@ const getExibitionByDay = (day) => {
   return exibitedAnimals;
 };
 
-const mondayAlert = { exhibition: 'The zoo will be closed!', officeHour: 'CLOSED' };
-
 const getDaySchedule = (day) => {
-  if (day === 'Monday') return mondayAlert;
+  if (day === 'Monday') return { exhibition: 'The zoo will be closed!', officeHour: 'CLOSED' };
   const officeHour = getFormattedOfficeHour(hours[day]);
   const exhibition = getExibitionByDay(day);
   return { officeHour, exhibition };
 };
 
-const getAllSchedule = () => {
-  const allSchedule = {};
-  Object.keys(hours).forEach((day) => { allSchedule[day] = getDaySchedule(day); });
-  return allSchedule;
+const getWeekSchedule = () => {
+  const weekSchedule = {};
+  Object.keys(hours).forEach((day) => { weekSchedule[day] = getDaySchedule(day); });
+  return weekSchedule;
 };
 
 const isADay = (argument) => Object.keys(hours).includes(argument);
@@ -32,7 +30,7 @@ const isAnAnimal = (argument) => species.map((zooAnimal) => zooAnimal.name).incl
 const isValidArgument = (argument) => isADay(argument) || isAnAnimal(argument);
 
 function getSchedule(scheduleTarget) {
-  if (!isValidArgument(scheduleTarget)) return getAllSchedule();
+  if (!isValidArgument(scheduleTarget)) return getWeekSchedule();
   if (isADay(scheduleTarget)) return { [scheduleTarget]: getDaySchedule(scheduleTarget) };
   return getAnimalAvailability(scheduleTarget);
 }
