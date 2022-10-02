@@ -26,10 +26,10 @@ const getAllSchedule = () => {
 };
 
 const getDaySchedule = (day) => {
-  if (day === 'Monday') return { Monday: mondayAlert };
+  if (day === 'Monday') return mondayAlert;
   const officeHour = getFormattedOfficeHour(hours[day]);
   const exhibition = getExibitionByDay(day);
-  return { [day]: { officeHour, exhibition } };
+  return { officeHour, exhibition };
 };
 
 const isADay = (argument) => Object.keys(hours).includes(argument);
@@ -38,7 +38,7 @@ const isValidArgument = (argument) => isADay(argument) || isAnAnimal(argument);
 
 function getSchedule(scheduleTarget) {
   if (!isValidArgument(scheduleTarget)) return getAllSchedule();
-  if (isADay(scheduleTarget)) return getDaySchedule(scheduleTarget);
+  if (isADay(scheduleTarget)) return { [scheduleTarget]: getDaySchedule(scheduleTarget) };
   return getAnimalAvailability(scheduleTarget);
 }
 
