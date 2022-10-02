@@ -14,22 +14,17 @@ const getExibitionByDay = (day) => {
 
 const mondayAlert = { exhibition: 'The zoo will be closed!', officeHour: 'CLOSED' };
 
-const getAllSchedule = () => {
-  const allSchedule = {};
-  Object.entries(hours).forEach((day) => {
-    const officeHour = getFormattedOfficeHour(day[1]);
-    const exhibition = getExibitionByDay(day[0]);
-    allSchedule[day[0]] = { officeHour, exhibition };
-  });
-  allSchedule.Monday = mondayAlert;
-  return allSchedule;
-};
-
 const getDaySchedule = (day) => {
   if (day === 'Monday') return mondayAlert;
   const officeHour = getFormattedOfficeHour(hours[day]);
   const exhibition = getExibitionByDay(day);
   return { officeHour, exhibition };
+};
+
+const getAllSchedule = () => {
+  const allSchedule = {};
+  Object.keys(hours).forEach((day) => { allSchedule[day] = getDaySchedule(day); });
+  return allSchedule;
 };
 
 const isADay = (argument) => Object.keys(hours).includes(argument);
