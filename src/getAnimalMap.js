@@ -17,7 +17,7 @@ function getAnimalNames(animal, sex, isSorted) {
   return { [animal]: names };
 }
 
-function getAnimalsAndNames(isSorted, sex) {
+function getAnimalsAndNames(sex, isSorted) {
   const animalsAndNames = getAllAnimals();
   const getNames = (animal) => getAnimalNames(animal, sex, isSorted);
   Object.keys((animalsAndNames)).forEach((region) => {
@@ -27,7 +27,7 @@ function getAnimalsAndNames(isSorted, sex) {
 }
 
 function getAnimalMap(options) {
-  if ((options) && (options.includeNames)) return getAnimalsAndNames(options.sorted, options.sex);
+  if ((options) && (options.includeNames)) return getAnimalsAndNames(options.sex, options.sorted);
   return getAllAnimals();
 }
 
