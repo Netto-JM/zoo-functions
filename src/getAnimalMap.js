@@ -27,8 +27,8 @@ function getAnimalsAndNames(isSorted, sex) {
 }
 
 function getAnimalMap(options) {
-  if (!(options) || !(options.includeNames)) return getAllAnimals();
-  return getAnimalsAndNames(options.sorted, options.sex);
+  if ((options) && (options.includeNames)) return getAnimalsAndNames(options.sorted, options.sex);
+  return getAllAnimals();
 }
 
 module.exports = getAnimalMap;
