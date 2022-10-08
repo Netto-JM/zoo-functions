@@ -3,8 +3,8 @@ const { species, hours } = require('../data/zoo_data');
 const getFormattedOfficeHour = ({ open, close }) => `Open from ${open}am until ${close}pm`;
 
 const getExibitionByDay = (day) => {
-  const filteredSpeciesByDay = species.filter((zooAnimal) => zooAnimal.availability.includes(day));
-  const exibitedAnimals = filteredSpeciesByDay.map((zooAnimal) => zooAnimal.name);
+  const filteredSpeciesByDay = species.filter((animal) => animal.availability.includes(day));
+  const exibitedAnimals = filteredSpeciesByDay.map((animal) => animal.name);
   return exibitedAnimals;
 };
 
@@ -22,7 +22,7 @@ const getWeekSchedule = () => {
 };
 
 const isADay = (argument) => Object.keys(hours).includes(argument);
-const isAnAnimal = (argument) => species.map((zooAnimal) => zooAnimal.name).includes(argument);
+const isAnAnimal = (argument) => species.map((animal) => animal.name).includes(argument);
 const isValidArgument = (argument) => isADay(argument) || isAnAnimal(argument);
 
 function getSchedule(scheduleTarget) {
