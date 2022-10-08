@@ -36,6 +36,11 @@ describe('Testes da função getOpeningHours', () => {
     expect(getOpeningHours).toBeInstanceOf(Function);
   });
 
+  test('O dia da semana passado como argumento tem que ser em inglês, um erro deve ser retornado em caso contrário', () => {
+    expect(() => getOpeningHours('Domingo', '7:00-PM')).toThrow('The day must be valid. Example: Monday');
+    expect(() => getOpeningHours('BARABAM', '11:00-AM')).toThrow('The day must be valid. Example: Monday');
+  });
+
   test('O horário precisam ter a formatação adequada, um erro deve ser retornado em caso contrário', () => {
     expect(() => getOpeningHours('tuesday', '3:3r-DF')).toThrow('The minutes should represent a number');
     expect(() => getOpeningHours('fRiday', 'f4:00-45')).toThrow('The hour should represent a number');
