@@ -33,11 +33,11 @@ describe('Testes da função HandlerElephants', () => {
   });
 
   test('se uma string não for passada como parâmetro, retorna uma mensagem alertando parâmetro inválido', () => {
-    const alertInvalidParameter = 'Parâmetro inválido, é necessário uma string';
-    expect(handlerElephants(null)).toBe(alertInvalidParameter);
-    expect(handlerElephants(true)).toBe(alertInvalidParameter);
-    expect(handlerElephants(123)).toBe(alertInvalidParameter);
-    expect(handlerElephants([])).toBe(alertInvalidParameter);
+    const invalidParameterAlert = 'Parâmetro inválido, é necessário uma string';
+    expect(handlerElephants(null)).toBe(invalidParameterAlert);
+    expect(handlerElephants(true)).toBe(invalidParameterAlert);
+    expect(handlerElephants(123)).toBe(invalidParameterAlert);
+    expect(handlerElephants([])).toBe(invalidParameterAlert);
   });
 
   test('se uma string inválida foi passada, retorna "null"', () => {
