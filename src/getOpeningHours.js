@@ -1,4 +1,6 @@
-const { hours } = require('../data/zoo_data');
+const {
+  hours,
+} = require('../data/zoo_data');
 
 const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const dayError = 'The day must be valid. Example: Monday';
@@ -46,7 +48,11 @@ const fix12 = (hour, open, close) => ({
 });
 
 const openOrClosed = (period, hour, open, close) => {
-  const { o, c, h } = fix12(hour, open, close);
+  const {
+    o,
+    c,
+    h,
+  } = fix12(hour, open, close);
   return (period === 'AM' && h >= o) || (period === 'PM' && h < c);
 };
 
@@ -55,7 +61,10 @@ const getOpeningHours = (day, dataHour) => {
   const adjustedDay = `${day[0].toUpperCase()}${day.slice(1).toLowerCase()}`;
   validateDay(adjustedDay);
   validateHour(dataHour);
-  const { open, close } = hours[adjustedDay];
+  const {
+    open,
+    close,
+  } = hours[adjustedDay];
   if (empty(close, open)) return 'The zoo is closed';
   const period = dataHour.split('-')[1].toUpperCase();
   const hour = Number(dataHour.split(':')[0]);
