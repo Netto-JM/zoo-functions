@@ -1,9 +1,5 @@
 const { species, hours } = require('../data/zoo_data');
 
-const getAnimalAvailability = (animal) => (
-  species.find((zooAnimal) => animal === zooAnimal.name).availability
-);
-
 const getFormattedOfficeHour = ({ open, close }) => `Open from ${open}am until ${close}pm`;
 
 const getExibitionByDay = (day) => {
@@ -32,7 +28,7 @@ const isValidArgument = (argument) => isADay(argument) || isAnAnimal(argument);
 function getSchedule(scheduleTarget) {
   if (!isValidArgument(scheduleTarget)) return getWeekSchedule();
   if (isADay(scheduleTarget)) return { [scheduleTarget]: getDaySchedule(scheduleTarget) };
-  return getAnimalAvailability(scheduleTarget);
+  return species.find((animal) => scheduleTarget === animal.name).availability;
 }
 
 module.exports = getSchedule;
