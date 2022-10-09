@@ -22,7 +22,7 @@ const getWeekSchedule = () => {
 };
 
 const isADay = (argument) => Object.keys(hours).includes(argument);
-const isAnAnimal = (argument) => species.map((animal) => animal.name).includes(argument);
+const isAnAnimal = (argument) => species.some((animal) => animal.name === argument);
 const isValidArgument = (argument) => isADay(argument) || isAnAnimal(argument);
 
 function getSchedule(scheduleTarget) {
